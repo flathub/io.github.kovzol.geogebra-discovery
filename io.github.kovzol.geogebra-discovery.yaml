@@ -11,8 +11,11 @@ finish-args:
   - --socket=fallback-x11
   - --socket=wayland
   - --env=JAVA_HOME=/app/jre
+  - --env=JAVA_OPTS=-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java
   - --share=network
   - --filesystem=xdg-documents
+  - --filesystem=xdg-download
+  - --filesystem=home:ro
 
 modules:
   - name: openjdk
@@ -58,14 +61,23 @@ modules:
 
       # Copy .desktop, .metainfo and icons:
       - install -D flatpak/io.github.kovzol.geogebra-discovery.desktop /app/share/applications/io.github.kovzol.geogebra-discovery.desktop
-      - install -D flatpak/io.github.kovzol.geogebra-discovery.metainfo.xml /app/share/metainfo/io.github.kovzol.geogebra-discovery.metainfo.xml
-      - install -D flatpak/gd-128.png /app/share/icons/hicolor/128x128/apps/io.github.kovzol.geogebra-discovery.png
-      - install -D flatpak/gd-256.png /app/share/icons/hicolor/256x256/apps/io.github.kovzol.geogebra-discovery.png
-      - install -D flatpak/gd-512.png /app/share/icons/hicolor/512x512/apps/io.github.kovzol.geogebra-discovery.png
-      - install -D flatpak/gd.svg /app/share/icons/hicolor/scalable/apps/io.github.kovzol.geogebra-discovery.svg
+      - install -Dm644 flatpak/io.github.kovzol.geogebra-discovery.metainfo.xml /app/share/metainfo/io.github.kovzol.geogebra-discovery.metainfo.xml
+      - install -Dm644 flatpak/gd-128.png /app/share/icons/hicolor/128x128/apps/io.github.kovzol.geogebra-discovery.png
+      - install -Dm644 flatpak/gd-256.png /app/share/icons/hicolor/256x256/apps/io.github.kovzol.geogebra-discovery.png
+      - install -Dm644 flatpak/gd-512.png /app/share/icons/hicolor/512x512/apps/io.github.kovzol.geogebra-discovery.png
+      - install -Dm644 flatpak/gd.svg /app/share/icons/hicolor/scalable/apps/io.github.kovzol.geogebra-discovery.svg
+
 
     sources:
       - type: archive
         url: https://github.com/kovzol/geogebra/archive/cf5d42754f20ab16a456d86e5dd48bcf38c4744f.zip
         sha256: cd7fbe21126c6ab6634ed8dad76ac917a9f75f5a20cb6a82bf88ba0c13d5a7ce
       - gradle-dependencies.json
+
+cleanup:
+  - /jre/bin/jjs
+  - /jre/bin/keytool
+  - /jre/bin/pack200
+  - /jre/bin/rmid
+  - /jre/bin/rmiregistry
+  - /jre/bin/unpack200

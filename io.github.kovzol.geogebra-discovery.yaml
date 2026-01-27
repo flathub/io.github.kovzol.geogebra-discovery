@@ -60,7 +60,7 @@ modules:
       - cp -a desktop/build/install/desktop/* /app
       - echo 'export XDG_DOCUMENTS_DIR=`xdg-user-dir DOCUMENTS`' > /app/bin/geogebra-discovery
       - echo 'export XDG_DOWNLOAD_DIR=`xdg-user-dir DOWNLOAD`' >> /app/bin/geogebra-discovery
-      - echo '/app/bin/desktop $*' >> /app/bin/geogebra-discovery
+      - echo '/app/bin/desktop "$@"' >> /app/bin/geogebra-discovery
       - chmod 755 /app/bin/geogebra-discovery
 
       # Copy .desktop, .metainfo and icons:

@@ -8,7 +8,7 @@ command: geogebra-discovery
 finish-args:
   - --share=ipc
   - --device=dri
-  - --socket=fallback-x11
+  - --socket=x11
   - --share=network
   - --filesystem=xdg-documents
   - --filesystem=xdg-download

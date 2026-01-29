@@ -9,7 +9,6 @@ finish-args:
   - --share=ipc
   - --device=dri
   - --socket=fallback-x11
-  - --socket=wayland
   - --share=network
   - --filesystem=xdg-documents
   - --filesystem=xdg-download
@@ -62,6 +61,7 @@ modules:
       # Create folders and wrapper for the executable:
       - mkdir -p /app/bin
       - cp -a desktop/build/install/desktop/* /app
+      - install -D geogebra-discovery /app/bin/geogebra-discovery
 
       # Copy .desktop, .metainfo and icons:
       - install -D flatpak/io.github.kovzol.geogebra-discovery.desktop /app/share/applications/io.github.kovzol.geogebra-discovery.desktop
@@ -70,7 +70,6 @@ modules:
       - install -Dm644 flatpak/gd-256.png /app/share/icons/hicolor/256x256/apps/io.github.kovzol.geogebra-discovery.png
       - install -Dm644 flatpak/gd-512.png /app/share/icons/hicolor/512x512/apps/io.github.kovzol.geogebra-discovery.png
       - install -Dm644 flatpak/gd.svg /app/share/icons/hicolor/scalable/apps/io.github.kovzol.geogebra-discovery.svg
-      - install -D geogebra-discovery /app/bin/geogebra-discovery
 
     sources:
       - type: archive

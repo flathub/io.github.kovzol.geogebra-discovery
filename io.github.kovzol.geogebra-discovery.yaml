@@ -73,8 +73,8 @@ modules:
 
     sources:
       - type: archive
-        url: https://github.com/kovzol/geogebra/archive/fa3b18d254699c404a7141909eb620ea0271f47b.zip
-        sha256: 1a709e689f209ebb1dcd5289a685c4505173c2bb6ce7fc494f0e95d125594f22
+        url: https://github.com/kovzol/geogebra/archive/4e189f35716db6fc3bfe20858b85f82bc25168ce.zip
+        sha256: 0dd74fda7a57dc06a7cf91eba878197c5fdeef9772791b9e8a8e91e4927a11c9
 
       - type: script
         dest-filename: geogebra-discovery
